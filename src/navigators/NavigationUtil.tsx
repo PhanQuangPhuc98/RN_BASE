@@ -13,8 +13,9 @@ function goBack() {
   if (_navigator) _navigator.dispatch(CommonActions.goBack());
 }
 
-export default {
-  navigate,
+export const NavigationUtil = {
   setTopLevelNavigator,
+  navigate,
   goBack,
 };
+export default NavigationUtil;

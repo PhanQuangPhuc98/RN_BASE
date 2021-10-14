@@ -1,74 +1,9 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
-  StatusBarProps,
-} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {PropsComponent} from '@interfaces';
 import {Header} from 'react-native-elements';
-import {colors} from '../constants/Theme';
-interface PropsComponent {
-  /**
-   * View hiển thị
-   */
-  children?: React.ReactNode;
-  /**
-   * State hiện thị màn hình Loading
-   */
-  isLoading?: boolean;
-  /**
-   * State hiện thị màn hình Lỗi
-   */
-  isError?: object | boolean;
-  /**
-   * View nút phải
-   */
-  rightComponent?: React.ReactElement;
-  /**
-   * View nút trái
-   */
-  leftComponent?: React.ReactElement;
-  /**
-   * View ở giữa
-   */
-  centerComponent?: React.ReactElement;
-  /**
-   * Style Container
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-  /**
-   * Style View center
-   */
-  centerContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * Style View left
-   */
-  leftContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * Style View Right
-   */
-  rightContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * Status Bar
-   */
-  chilStyle?: StyleProp<ViewStyle>;
-
-  statusBarProps?: StatusBarProps;
-  reload?: () => void;
-  onRefresh?: () => void;
-
-  dialogLoading?: boolean;
-
-  isSafeAre?: boolean;
-  isEmpty?: boolean;
-  renderViewHeader?: React.ReactNode;
-  titleBackHeader?: string;
-  backgroundColor?: string;
-}
-const ScreenComponents: React.FC<PropsComponent> = props => {
+import {Theme} from '@constants';
+export const ScreenComponents: React.FC<PropsComponent> = props => {
   const {
     centerComponent,
     rightComponent,
@@ -87,10 +22,10 @@ const ScreenComponents: React.FC<PropsComponent> = props => {
     chilStyle,
   } = props;
   return (
-    <View
+    <SafeAreaView
       style={[
         styles.Container,
-        {backgroundColor: backgroundColor || colors.white},
+        {backgroundColor: backgroundColor || Theme.colors.white},
       ]}>
       <Header
         containerStyle={containerStyle}
@@ -105,7 +40,7 @@ const ScreenComponents: React.FC<PropsComponent> = props => {
       <SafeAreaView
         style={chilStyle || styles.Container}
         children={children}></SafeAreaView>
-    </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({

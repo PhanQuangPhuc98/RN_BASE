@@ -14,38 +14,23 @@ const Tab = createNativeStackNavigator();
 const Stack = createBottomTabNavigator();
 function HomeScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-const ButtonTab = () => {
-  return (
-    <Stack.Navigator
+    <Tab.Navigator
+      screenOptions={{headerShown: false}}
       children={Object.keys(StackAppUser).map((elem, index) => {
         return (
-          <Stack.Screen
-            key={index}
-            name={elem}
-            component={StackAppUser[elem]}
-          />
+          <Tab.Screen key={index} name={elem} component={StackAppUser[elem]} />
         );
       })}
     />
   );
-};
+}
 const AppNavigatior = () => {
   return (
-    <NavigationContainer>
-      <ButtonTab />
+    <NavigationContainer
+      ref={ref => {
+        NavigationUtil.setTopLevelNavigator(ref);
+      }}>
+      <HomeScreen />
     </NavigationContainer>
   );
 };

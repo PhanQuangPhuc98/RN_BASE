@@ -1,6 +1,6 @@
 import fonts from './fontsAsset';
 import images from './imagesAsset';
-const R = {
+export const R = {
   fonts,
   images,
 };
